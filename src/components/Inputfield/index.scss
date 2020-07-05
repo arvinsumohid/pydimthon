@@ -1,0 +1,36 @@
+@import '../../assets/styles/colors';
+
+.inputfield {
+    margin-bottom: 15px;
+
+    &--center {
+        text-align: center;
+    }
+
+    &--margin-bottom {
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        font-size: 12px;
+        letter-spacing: 1px;
+        border: none;
+        border-bottom: 1px solid $color-4;
+        box-sizing: border-box;
+        
+        &[type="password"],
+        &[type="email"],
+        &[type="text"] {
+            padding: 10px;
+            padding-bottom: 15px;
+            background-color: transparent;
+        }
+
+        &[type="submit"] {
+            color: $color-5;
+            font-size: 16px;
+            border-bottom: none;
+        }
+    }
+}

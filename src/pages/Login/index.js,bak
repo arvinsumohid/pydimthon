@@ -1,0 +1,169 @@
+import React, { useState } from 'react';
+import { Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
+import { useSelector } from 'react-redux';
+import { Formik } from 'formik';
+
+
+import logo from '../../images/logo.svg';
+import './index.scss';
+
+const Login = () => {
+    const [signInModal, setSignInModal] = useState(false);
+    const [signUpModal, setSignUpModal] = useState(false);
+    const [signInValidated, setSignInValidated] = useState(false);
+    const [signUpValidated, setSignUpValidated] = useState(false);
+    const [signInUser, setSignInUser] = useState([])
+    const isLoggedIn = useSelector(state => state.user.loggedIn)
+
+    //modal show
+    const signInShow = () => setSignInModal(true)
+    const signUpShow = () => setSignUpModal(true)
+    
+    //modal hide
+    const signInHide = () => setSignInModal(false)
+    const signUpHide = () => setSignUpModal(false)
+
+    //handle event
+    const handleEmailChange = (evt) => {
+        const email = evt.target.value
+        setSignInUser({ ...signInUser, email : email })
+    }
+
+    const handlePasswordChange = (evt) => {
+        const password = evt.target.value
+        setSignInUser({ ...signInUser, password : password })
+    }
+
+    const handleSignIn = (evt) => {
+        evt.preventDefault();
+
+        const form = evt.currentTarget;
+
+        console.log(form)
+
+        setSignInValidated(true);
+    }
+
+    const handleSignUp = (evt) => {
+        evt.preventDefault();
+
+        const form = evt.currentTarget;
+
+        console.log(form);
+        
+        setSignUpValidated(true);
+    }
+
+
+    if( isLoggedIn )
+        return <Redirect to='/' />
+
+
+    return (
+
+        <Container fluid as="section" className="border my-auto vh-100">
+            <Row>
+                <Container>
+                    <Row className="justify-content-center">
+                        <Col lg={6}>
+                            <img src={logo} className="App-logo" alt="logo" />
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col className="text-center">
+                            <Button variant="primary" className="mx-1" onClick={signInShow}>Sign In</Button>
+
+                            <Modal show={signInModal} onHide={signInHide}>
+                                {/* <Modal.Dialog> */}
+                                    <Modal.Header closeButton>
+                                    <Modal.Title className="m-auto w-100">Sign In</Modal.Title>
+                                    </Modal.Header>
+
+                                    <Form noValidate validated={signInValidated}  onSubmit={handleSignIn}>
+                                        <Modal.Body>
+                                            <Form.Group controlId="email">
+                                                <Form.Label>Email Address</Form.Label>
+                                                <Form.Control required type="email" placeholder="Email" onChange={handleEmailChange} />
+                                                <Form.Control.Feedback type="invalid">
+                                                    Incorrect Email Address
+                                                </Form.Control.Feedback>
+                                            </Form.Group>
+                                            
+                                            <Form.Group controlId="password">
+                                                <Form.Label>Password</Form.Label>
+                                                <Form.Control required type="password" placeholder="Password" onChange={handlePasswordChange} />
+                                                <Form.Control.Feedback type="invalid">
+                                                    Password Required
+                                                </Form.Control.Feedback>
+                                            </Form.Group>
+                                        </Modal.Body>
+
+                                        <div className="invalid-feedback">
+                                            Incorrect Email/Password
+                                        </div>
+
+                                        <Modal.Footer>
+                                        <Button className="m-auto" variant="primary" type="submit" >Submit</Button>
+                                        </Modal.Footer>
+                                    </Form>
+                                {/* </Modal.Dialog> */}
+                            </Modal>
+
+                            
+                            <Button variant="primary" className="mx-1" onClick={signUpShow}>Sign Up</Button>
+
+                            <Modal show={signUpModal}  onHide={signUpHide}>
+                                {/* <Modal.Dialog> */}
+                                    <Modal.Header closeButton>
+                                    <Modal.Title>Sign Up</Modal.Title>
+                                    </Modal.Header>
+
+                                <Form noValidate validated={signUpValidated} onSubmit={handleSignUp}>
+                                    <Modal.Body>
+                                        
+                                        <Form.Group controlId="school_id">
+                                            <Form.Label>School ID</Form.Label>
+                                            <Form.Control required type="text" placeholder="School ID" />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="fname">
+                                            <Form.Label>First Name</Form.Label>
+                                            <Form.Control required type="text" placeholder="First Name" />
+                                        </Form.Group>
+
+                                        <Form.Group controlId="lname">
+                                            <Form.Label>First Name</Form.Label>
+                                            <Form.Control required type="text" placeholder="First Name" />
+                                        </Form.Group>
+                                        
+                                        <Form.Group controlId="signup_email">
+                                            <Form.Label>Email</Form.Label>
+                                            <Form.Control required type="email" placeholder="Email" />
+                                        </Form.Group>
+                                        
+                                        <Form.Group controlId="password">
+                                            <Form.Label>Password</Form.Label>
+                                            <Form.Control required type="password" placeholder="Password" />
+                                        </Form.Group>
+                                        
+                                        <Form.Group controlId="re_password">
+                                            <Form.Label>Retype Password</Form.Label>
+                                            <Form.Control required type="password" placeholder="Retype Password" />
+                                        </Form.Group>
+                                    </Modal.Body>
+
+                                    <Modal.Footer>
+                                        <Button className="m-auto" variant="primary" type="submit">Submit</Button>
+                                    </Modal.Footer>
+                                </Form>
+                                {/* </Modal.Dialog> */}
+                            </Modal>
+                        </Col>
+                    </Row>
+                </Container>
+            </Row>
+        </Container>
+    )
+}
+export default Login;
