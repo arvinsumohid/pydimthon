@@ -6,7 +6,7 @@ import Button from '../../components/Button/';
 import Holder from '../../components/Holder/';
 import Inputfield from '../../components/Inputfield/';
 
-import logo from '../../images/logo.svg';
+import logo from '../../assets/images/logo.png';
 import './index.scss';
 
 const Login = () => {
