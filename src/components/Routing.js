@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 
 import Login from '../pages/Login';
+import Register from '../pages/Register';
 import Homepage from '../pages/Homepage';
 
 const Routing = () => {
@@ -13,6 +14,7 @@ const Routing = () => {
         <Router>
             <Switch>
                 <Route key="login" path="/login" component={Login} />
+                <Route key="register" path="/register" component={Register} />
                 <Route key="home" path="/" component={Homepage} />
             </Switch>
         </Router>

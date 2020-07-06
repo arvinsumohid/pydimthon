@@ -1,0 +1,18 @@
+@import '../../assets/styles/colors';
+
+.logo-text {
+    &__titlebox {
+        p {
+            color: $color-2;
+    
+            a {
+                color: $color-3;
+            }
+        }
+    }
+
+    &__title {
+        color: $color-1;
+    }
+
+}
