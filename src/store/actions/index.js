@@ -2,7 +2,8 @@ import userActions from './userActions';
 
 const allActions = {
     // counterActions,
-    userActions
+    userActions,
+    lessonsActions
 }
 
 export default allActions

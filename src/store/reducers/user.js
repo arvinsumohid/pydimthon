@@ -1,6 +1,6 @@
 const initialState = {
-    user_collection : [],
-    user : [],
+    user_collection : {},
+    user : {},
     loggedIn : false
 }
 
