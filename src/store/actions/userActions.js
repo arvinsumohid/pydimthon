@@ -1,6 +1,6 @@
 const setUser = (userData) => {
     return {
-        type: 'SET_USER',
+        type: 'LOG_IN',
         payload: userData
     }
 }

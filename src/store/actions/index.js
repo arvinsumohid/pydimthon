@@ -1,4 +1,5 @@
 import userActions from './userActions';
+import lessonsActions from './lessonsActions';
 
 const allActions = {
     // counterActions,

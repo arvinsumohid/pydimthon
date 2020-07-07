@@ -9,24 +9,30 @@ const initialState = [
 
 const lessons = (state = initialState, action) => {
     switch( action.type ) {
-        case 'ADD_LESSON' :
+        case 'ADD_LESSON' : {
             state.push(
                 action.payload
             )
 
             return state
+            break;
+        }
 
-        case 'UPDATE_LESSON' :
+        case 'UPDATE_LESSON' : {
             const [lessonId, chapterNumber, title, content] = action.payload
-            state = {...state, ...( state.lessonId == lessonId && {chapterNumber, title, content})}
+            state = {...state, ...( state.lessonId === lessonId && {chapterNumber, title, content})}
 
             return state
+            break;
+        }
 
-        case 'DELETE_LESSON' :
+        case 'DELETE_LESSON' : {
             const [lessonId] = action.payload
             state = state.filter(lesson => lesson.lessonId !== lessonId)
 
             return state
+            break;
+        }
 
         default :
             return state

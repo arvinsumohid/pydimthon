@@ -9,35 +9,111 @@ import Inputfield from '../../components/Inputfield/';
 import './index.scss';
 
 const Register = () => {
-    const [user, setUser] = useState({
-                                schoolId : '',
-                                fname : '',
-                                lname : '',
-                                email : '',
-                                password : '',
-                                rePassword : ''
-                            })
-    const [additionalClass, setAdditionalClass] = useState('');
     const isLoggedIn = useSelector(state => state.user.loggedIn)
     const [props] = useState({
         'title' : 'Register',
          'message' : <p>Already registered? <a href="/login">Login</a></p>
     })
+    const [user, setUser] = useState({
+        schoolId : {
+            type : 'text',
+            placeholder : 'School ID',
+            value : '',
+            containerClass : '',
+            required: true,
+        },
+        fname : {
+            type : 'text',
+            placeholder : 'First Name',
+            value : '',
+            containerClass : '',
+            required: true,
+        },
+        lname : {
+            type : 'text',
+            placeholder : 'Last Name',
+            value : '',
+            containerClass : '',
+            required: true,
+        },
+        email : {
+            type : 'email',
+            placeholder : 'Email',
+            value : '',
+            containerClass : '',
+            required: true,
+        },
+        password : {
+            type : 'password',
+            placeholder : 'Password',
+            value : '',
+            containerClass : '',
+            required: true,
+        },
+        rePassword : {
+            type : 'password',
+            placeholder : 'Re-Password',
+            value : '',
+            containerClass : '',
+            required: true,
+        }
+    })
 
     useEffect(() => {
-        if(user.password !== undefined) {
-            if(user.password !== user.rePassword)
-                setAdditionalClass('inputfield--red-border');
-            else if( user.password === user.rePassword )
-                setAdditionalClass('inputfield--green-border');
+        if(user.password.value !== '' || user.rePassword.value !== '') {
+            if(user.password.value !== user.rePassword.value)
+                setUser({
+                        ...user,
+                        password : {
+                            value : user.password.value,
+                            type : user.password.type,
+                            placeholder : user.password.placeholder,
+                            required : user.password.required,
+                            containerClass : 'inputfield--red-border'
+                        },
+                        rePassword :  {
+                            value : user.rePassword.value,
+                            type : user.rePassword.type,
+                            placeholder : user.rePassword.placeholder,
+                            required : user.rePassword.required,
+                            containerClass : 'inputfield--red-border'
+                        }
+                    });
+            else if( user.password.value === user.rePassword.value )
+                setUser({
+                        ...user,
+                        password : {
+                            value : user.password.value,
+                            type : user.password.type,
+                            placeholder : user.password.placeholder,
+                            required : user.password.required,
+                            containerClass : 'inputfield--green-border'
+                        },
+                        rePassword :  {
+                            value : user.rePassword.value,
+                            type : user.rePassword.type,
+                            placeholder : user.rePassword.placeholder,
+                            required : user.rePassword.required,
+                            containerClass : 'inputfield--green-border'
+                        }
+                     });
         }
-
-    }, [user.password, user.rePassword])
+    }, [user, user.password.value, user.rePassword.value])
 
     //handle Events
-    const handleInputChange = (evt) => {
-        const {name, value} = evt.target;
-        setUser({...user, [name]:value})
+    const handleInputChange = (fieldKey, evt) => {
+        const {value, type, placeholder, required, containerClass} = evt.target;
+
+        setUser({
+                ...user,
+                [fieldKey] : {
+                    value : value,
+                    type: type,
+                    placeholder: placeholder,
+                    required: required,
+                    containerClass: containerClass
+                }
+            })
     }
 
     if( isLoggedIn )
@@ -47,13 +123,19 @@ const Register = () => {
         <LogoForm className="login">
             <TitleFormBox props={props}>
                     <form>
-                        <Inputfield type="text" name="schoolId" placeholder="School ID" onChange={handleInputChange} required/>
-                        <Inputfield type="text" name="fname" placeholder="First Name" onChange={handleInputChange} required/>
-                        <Inputfield type="text" name="lname" placeholder="Last Name" onChange={handleInputChange} required/>
-                        <Inputfield type="email" name="email" placeholder="Email" onChange={handleInputChange} required/>
-                        <Inputfield containerClass={additionalClass} type="password" name="password" placeholder="Password" onChange={handleInputChange} required/>
-                        <Inputfield containerClass={additionalClass} type="password" name="rePassword" placeholder="Re-password" onChange={handleInputChange} required/>
+                        {Object.keys(user).map(fieldKey => {
+                            return <Inputfield
+                                key={fieldKey}
+                                value={user[fieldKey].value}
+                                type={user[fieldKey].type}
+                                placeholder={user[fieldKey].placeholder}
+                                required={user[fieldKey].required}
+                                containerClass={user[fieldKey].containerClass}
+                                onChange={(evt) => handleInputChange(fieldKey, evt)}
+                            />
+                        })}
                         <Inputfield type="submit" value="Register" className="button" />
+
                     </form>
             </TitleFormBox>
         </LogoForm>
