@@ -4,7 +4,7 @@ import Holder from '../Holder';
 
 import './index.scss';
 
-const TitleFormBox = ({children, props}) => {
+const TopNav = ({children, props}) => {
     const {title, message} = props
 
     return (
@@ -20,4 +20,4 @@ const TitleFormBox = ({children, props}) => {
     )
 }
 
-export default TitleFormBox;
+export default TopNav;

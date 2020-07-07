@@ -3,6 +3,24 @@
 .inputfield {
     margin-bottom: 15px;
 
+    &--red-border {
+        input {
+            outline-color: red;
+            outline-width: 1px;
+            outline-style: auto;
+            outline-offset: -2px;
+        }
+    }
+
+    &--green-border {
+        input {
+            outline-color: green;
+            outline-width: 1px;
+            outline-style: auto;
+            outline-offset: -2px;
+        }
+    }
+
     &--center {
         text-align: center;
     }

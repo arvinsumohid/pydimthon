@@ -2,12 +2,10 @@ import React from 'react';
 
 import '../components/App.scss';
 
-import Routing from './Routing';
+import RoutingStudent from './RoutingStudent';
 
 function App() {
-  return (
-    <Routing />
-  );
+  return <RoutingStudent />
 }
 
 export default App;

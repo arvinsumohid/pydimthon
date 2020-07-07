@@ -7,9 +7,9 @@ import {
 
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import Homepage from '../pages/Homepage';
+import Homepage from '../pages/Student/Homepage';
 
-const Routing = () => {
+const RoutingStudent = () => {
     return (
         <Router>
             <Switch>
@@ -21,4 +21,4 @@ const Routing = () => {
     )
 }
 
-export default Routing
+export default RoutingStudent

@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import React from 'react';
 
 import Holder from '../Holder/';
-import Inputfield from '../Inputfield/';
-
 import logo from '../../assets/images/logo.png';
+
 import './index.scss';
 
 const LogoForm = ({children, className = ''}) => {
