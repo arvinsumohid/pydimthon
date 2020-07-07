@@ -4,3 +4,16 @@
 body {
     background-color: $color-4;
 }
+
+.msg {
+    width: 100%;
+    text-align: center;
+
+    .error {
+        color: red;
+    }
+
+    .success {
+        color: green;
+    }
+}
