@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import LogoForm from '../../components/LogoForm/';
@@ -12,7 +12,7 @@ const Register = () => {
     const isLoggedIn = useSelector(state => state.user.loggedIn)
     const [props] = useState({
         'title' : 'Register',
-         'message' : <p>Already registered? <a href="/login">Login</a></p>
+         'message' : <p>Already registered? <Link to="/login">Login</Link></p>
     })
     const [user, setUser] = useState({
         schoolId : {

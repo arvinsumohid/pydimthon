@@ -1,6 +1,6 @@
 import React from 'react';
 
-import '../components/App.scss';
+import './index.scss';
 
 import RoutingStudent from './RoutingStudent';
 

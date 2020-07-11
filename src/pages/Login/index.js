@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { useSelector,useDispatch } from 'react-redux';
 
 import LogoForm from '../../components/LogoForm/';
@@ -32,7 +32,7 @@ const Login = () => {
                         })
     const [props] = useState({
                             'title' : 'Sign In',
-                            'message' : <p>Don't have an account? <a href="/register">Create your account</a></p>
+                            'message' : <p>Don't have an account? <Link to="/register">Create your account</Link></p>
                         })
     
 
