@@ -15,7 +15,6 @@ const lessons = (state = initialState, action) => {
             )
 
             return state
-            break;
         }
 
         case 'UPDATE_LESSON' : {
@@ -23,7 +22,6 @@ const lessons = (state = initialState, action) => {
             state = {...state, ...( state.lessonId === lessonId && {chapterNumber, title, content})}
 
             return state
-            break;
         }
 
         case 'DELETE_LESSON' : {
@@ -31,7 +29,6 @@ const lessons = (state = initialState, action) => {
             state = state.filter(lesson => lesson.lessonId !== lessonId)
 
             return state
-            break;
         }
 
         default :

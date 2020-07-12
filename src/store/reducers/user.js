@@ -12,39 +12,57 @@ const initialState = {
     ],
     user : {},
     loggedIn : false,
-    error : false
+    error : {
+            status : false,
+            message : ''
+        }
 }
 
 const user = (state = initialState, action) => {
     switch( action.type ) {
         case 'ADD_USER' : {
+            const { email } = action.user
+            const isExist = state.userCollection.find(user => (user.email === email ? true : false) )
+            let count = state.userCollection.length
+            let user = { ...action.user, userId : (++count) }
+            
+            if( isExist )
+                state.error = {
+                        status: true,
+                        message: 'Email already Exist'
+                    }
+            else
+                state.error = {
+                    status: false,
+                    message: ''
+                }
+
+
+            if( state.error.status )
+                return state
+
             state.userCollection.push(
-                action.payload
+                user
             )
 
-            state.user = {}
-            state.loggedIn = false
-
             return state
-            break;
         }
 
         case 'LOG_IN' : {
             const {email, password} = action.payload
+
             state.userCollection.map( user => {
-                if( user.email === email.value && user.password === password.value ) {
+                if( user.email === email && user.password === password ) {
                     state.user = {user}
                     state.loggedIn = true;
-                    state.error = false
-                    console.log('yes')
+                    state.error.status = false
                 }
 
-                state.error = true
+                state.error.status = true
+                return true
             });
 
             return state
-            // return state.map( user => user.email === action.email && user.password === user.password ? user : false )
-            break;
         }
 
         case 'LOG_OUT' : {
@@ -52,7 +70,6 @@ const user = (state = initialState, action) => {
             state.loggedIn = false
 
             return state
-            break;
         }
 
         default :

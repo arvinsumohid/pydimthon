@@ -1,14 +1,29 @@
 const setUser = (userData) => {
+    const {email, password } = userData
+    const user = {
+        email : email.value,
+        password : password.value
+    }
     return {
         type: 'LOG_IN',
-        payload: userData
+        payload: user
     }
 }
 
 const addUser = (userData) => {
+    const {schoolId, fname, lname, email, password } = userData
+    const user = {
+        userId : null,
+        schoolId : schoolId.value,
+        fname : fname.value,
+        lname : lname.value,
+        email : email.value,
+        password : password.value
+    }
+
     return {
         type: 'ADD_USER',
-        payload: userData
+        user: user
     }
 }
 

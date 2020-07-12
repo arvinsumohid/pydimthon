@@ -12,8 +12,7 @@ import './index.scss';
 
 const Login = () => {
     const isLoggedIn = useSelector(state => state.user.loggedIn)
-    const isError = useSelector(state => state.user.error)
-    const [errorMsg, setErrorMsg] = '';
+    const isError = useSelector(state => state.user.error.status)
     const dispatch = useDispatch()
     const [user, setUser] = useState({
                             email : {
@@ -38,7 +37,7 @@ const Login = () => {
 
     //handle event
     const handleInputChange = (fieldKey, evt) => {
-        const {value, type, placeholder, required} = evt.target;
+        const {value, type, placeholder, required} = evt.target
 
         setUser({
                 ...user,
