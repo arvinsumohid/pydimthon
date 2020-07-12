@@ -15,7 +15,11 @@ const initialState = {
     error : {
             status : false,
             message : ''
-        }
+        },
+    success : {
+        status: false,
+        message: ''
+    }
 }
 
 const user = (state = initialState, action) => {
@@ -34,7 +38,7 @@ const user = (state = initialState, action) => {
             else
                 state.error = {
                     status: false,
-                    message: ''
+                    message: 'Successfully Registered!'
                 }
 
 
@@ -53,9 +57,11 @@ const user = (state = initialState, action) => {
 
             state.userCollection.map( user => {
                 if( user.email === email && user.password === password ) {
-                    state.user = {user}
+                    state.user = {...user}
                     state.loggedIn = true;
                     state.error.status = false
+
+                    return true
                 }
 
                 state.error.status = true

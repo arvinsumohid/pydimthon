@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import LogoForm from '../../components/LogoForm/';
 import TitleFormBox from '../../components/TitleFormBox/';
 import Inputfield from '../../components/Inputfield/';
+import Holder from '../../components/Holder/';
 import allActions from '../../store/actions';
 
 import './index.scss';
@@ -99,6 +100,16 @@ const Register = () => {
     if( isLoggedIn )
         return <Redirect to='/' />
 
+    if( !error.status && error.message === 'Successfully Registered!' )
+        return (
+
+            <Holder>
+                <div className="msg">
+                    <p className="success">{error.message} Click <Link to="/login">here</Link> to login.</p>
+                </div>
+            </Holder>
+        )
+
     return (
         <LogoForm className="login">
             <TitleFormBox props={props}>
@@ -116,7 +127,7 @@ const Register = () => {
                         })}
                         <Inputfield type="submit" value="Register" className="button" />
                         <div className="msg">
-                            {error.status && <span className="error">{error.message}</span>}
+                            {error.status && <span className="error">{error.message}</span> }
                         </div>
                     </form>
             </TitleFormBox>
