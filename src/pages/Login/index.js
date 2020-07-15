@@ -29,10 +29,6 @@ const Login = () => {
                                 required: true,
                             }
                         })
-    const [props] = useState({
-                            'title' : 'Sign In',
-                            'message' : <p>Don't have an account? <Link to="/register">Create your account</Link></p>
-                        })
     
 
     //handle event
@@ -63,7 +59,7 @@ const Login = () => {
 
     return (
         <LogoForm className="login">
-            <TitleFormBox props={props}>
+            <TitleFormBox title="Sign Up" message={<p>Don't have an account? <Link to="/register">Create your account</Link></p>}>
                 <form onSubmit={loginForm}>
                         {Object.keys(user).map(fieldKey => {
                             return <Inputfield

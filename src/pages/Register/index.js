@@ -14,10 +14,6 @@ const Register = () => {
     const isLoggedIn = useSelector(state => state.user.loggedIn)
     const error = useSelector(state => state.user.error)
     const dispatch = useDispatch()
-    const [props] = useState({
-        'title' : 'Register',
-         'message' : <p>Already registered? <Link to="/login">Login</Link></p>
-    })
     const [user, setUser] = useState({
         schoolId : {
             type : 'text',
@@ -112,7 +108,7 @@ const Register = () => {
 
     return (
         <LogoForm className="login">
-            <TitleFormBox props={props}>
+                <TitleFormBox title="Register" message={<p>Already registered? <Link to="/login">Login</Link></p>}>
                     <form onSubmit={registerForm}>
                         {Object.keys(user).map(fieldKey => {
                             return <Inputfield

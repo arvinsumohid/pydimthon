@@ -4,8 +4,8 @@ import Holder from '../Holder';
 
 import './index.scss';
 
-const TitleFormBox = ({children, props}) => {
-    const {title, message} = props
+const TitleFormBox = (props) => {
+    const {title, message, children} = props
 
     return (
         <Holder>
