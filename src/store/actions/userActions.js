@@ -27,10 +27,9 @@ const addUser = (userData) => {
     }
 }
 
-const logout = (userData) => {
+const logout = () => {
     return {
-        type: 'LOG_OUT',
-        payload: userData
+        type: 'LOG_OUT'
     }
 }
 

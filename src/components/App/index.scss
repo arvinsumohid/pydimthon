@@ -1,8 +1,17 @@
 // @import "~bootstrap/scss/bootstrap";
 @import '../../assets/styles/colors';
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: $color-4;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
 .msg {

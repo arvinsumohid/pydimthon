@@ -1,0 +1,80 @@
+@import '../../assets/styles/colors';
+
+.top-nav {
+    position: relative;
+    width: 100%;
+    background-color: $color-3;
+
+    &__container {
+        align-items: center;
+        width: 100%;
+        margin: 0 auto;
+        padding: 1rem;
+    }
+
+    &__logobox {
+        img {
+            max-width: 2rem;
+            display: block;
+        }
+    }
+
+    &__menu {
+
+        ul {
+            margin: 0 auto;
+            list-style-type: none;
+
+            li {
+                font-weight: 500;
+                color: $color-4;
+                line-height: 0.8;
+                margin-bottom: 0.15rem;
+                position: relative;
+
+                li {
+                    color: $color-1;
+                    margin-bottom: 1rem;
+
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        border-bottom: 0.0625rem solid $color-4;
+                        bottom: -0.65rem;
+                        width: calc(100% - 2rem);
+                        left: 1rem;
+                    }
+                    
+                    &:last-child {
+                        margin-bottom: 0 !important;
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    &__acc-sub {
+        margin: 0;
+        background-color: #fff;
+        padding: 1rem;
+        position: absolute;
+        border-radius: 0.5rem;
+        right: 0;
+        top: 200%;
+        min-width: 10rem;
+        opacity: 0;
+        visibility: hidden;
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        li {
+            text-align: center;
+        }
+    }
+}

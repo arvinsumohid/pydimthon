@@ -15,6 +15,7 @@ const RoutingStudent = () => {
             <Switch>
                 <Route key="login" path="/login" component={Login} />
                 <Route key="register" path="/register" component={Register} />
+                <Route key="settings" path="/settings" component={Homepage} />
                 <Route key="home" path="/" component={Homepage} />
             </Switch>
         </Router>

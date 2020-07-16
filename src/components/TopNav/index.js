@@ -1,22 +1,58 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux';
 
-import Holder from '../Holder';
+import allActions from '../../store/actions';
 
 import './index.scss';
 
-const TopNav = ({children, props}) => {
-    const {title, message} = props
+import logo from '../../assets/images/logo.png';
+
+
+const TopNav = ({children}) => {
+    const dispatch = useDispatch()
+
+
+
+    const accountSub = (evt) => {
+        evt.preventDefault()
+        const accSub = document.querySelector('.top-nav__acc-sub')
+
+        if(accSub.classList.contains('active'))
+            accSub.classList.remove('active')
+        else
+           accSub.classList.add('active')
+    }
+
+    const logout = (evt) => {
+        evt.preventDefault();
+        dispatch(allActions.userActions.logout())
+    }
 
     return (
-        <Holder>
-            <header className="logo-text__titlebox">
-                <h2 className="logo-text__title">{title}</h2>
-                {message}
-            </header>
-            <div className="logo-text__form">
-                {children}
+        <nav className="top-nav">
+            <div className="top-nav__container flex">
+                <div className="top-nav__logobox shrink">
+                    <Link to='/'>
+                        <img src={logo} className="App-logo" alt="logo" />
+                    </Link>
+                </div>
+                <div className="top-nav__filler auto">
+
+                </div>
+                <div className="top-nav__menu shrink">
+                    <ul>
+                        <li class="has-children">
+                            <a href="#accounts" onClick={accountSub}>Account</a>
+                            <ul className="top-nav__acc-sub">
+                                <li><Link to="/settings">Settings</Link></li>
+                                <li><a href="/logout" onClick={logout}>Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </Holder>
+        </nav>
     )
 }
 

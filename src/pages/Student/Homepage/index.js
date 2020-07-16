@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import Holder from '../../../components/Holder/';
+import MainContainer from '../../../components/MainContainer/';
 
 import './index.scss';
 
@@ -13,12 +14,13 @@ const Homepage = () => {
     if( !isLoggedIn )
         return <Redirect to='/login' />
 
-    console.log(user)
     return (
-        <Holder>
-            <h1>{`${user.fname} ${user.lname}`}</h1>
-            <h2>Homepage</h2>
-        </Holder>
+        <MainContainer>
+            <Holder>
+                <h1>{`${user.fname} ${user.lname}`}</h1>
+                <h2>Homepage</h2>
+            </Holder>
+        </MainContainer>
     )
 }
 
