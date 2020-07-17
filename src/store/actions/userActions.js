@@ -18,7 +18,8 @@ const addUser = (userData) => {
         fname : fname.value,
         lname : lname.value,
         email : email.value,
-        password : password.value
+        password : password.value,
+        type: 'Student'
     }
 
     return {

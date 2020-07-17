@@ -13,10 +13,20 @@
     }
 
     &__logobox {
+        width: 15rem;
         img {
             max-width: 2rem;
             display: block;
         }
+    }
+
+    &__indicator {
+        font-weight: 500;
+        color: $color-white;
+        line-height: 0.8;
+        margin-bottom: 0.15rem;
+        position: relative;
+        font-size: 1.8rem;
     }
 
     &__menu {

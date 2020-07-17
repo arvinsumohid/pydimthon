@@ -7,6 +7,7 @@ const initialState = {
             lname: 'Sumohid',
             email: 'admin@pydimthon.com',
             password: 'admin123',
+            type: 'Admin'
 
         }
     ],
@@ -19,7 +20,21 @@ const initialState = {
     success : {
         status: false,
         message: ''
-    }
+    },
+    links : [
+        {
+            key : 'dashboard',
+            to : '/',
+            label : 'Dashboard',
+            className : 'active'
+        },
+        {
+            key : 'account',
+            to : '/account',
+            label : 'Account Settings',
+            className : ''
+        },
+    ]
 }
 
 const user = (state = initialState, action) => {

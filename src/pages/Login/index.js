@@ -18,14 +18,14 @@ const Login = () => {
                             email : {
                                 type : 'email',
                                 placeholder : 'Email',
-                                value : '',
+                                value : 'admin@pydimthon.com',
                                 containerClass : '',
                                 required: true,
                             },
                             password : {
                                 type : 'password',
                                 placeholder : 'Password',
-                                value : '',
+                                value : 'admin123',
                                 required: true,
                             }
                         })

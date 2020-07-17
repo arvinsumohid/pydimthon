@@ -4,12 +4,12 @@ import SideNav from '../SideNav';
 
 import './index.scss'
 
-const MainContainer = ({children}) => {
+const MainContainer = ( {pageKey, children} ) => {
     return (
         <main className="main">
             <TopNav />
             <div className="flex height-100">
-                <SideNav className="shrink"/>
+                <SideNav className="shrink" pageKey={pageKey}/>
                 <div className="auto">
                     {children}
                 </div>

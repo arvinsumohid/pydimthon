@@ -8,6 +8,7 @@ import MainContainer from '../../../components/MainContainer/';
 import './index.scss';
 
 const Homepage = () => {
+    const pageKey = 'dashboard'
     const isLoggedIn = useSelector(state => state.user.loggedIn)
     const user = useSelector(state => state.user.user)
 
@@ -15,7 +16,7 @@ const Homepage = () => {
         return <Redirect to='/login' />
 
     return (
-        <MainContainer>
+        <MainContainer pageKey={pageKey}>
             <Holder>
                 <h1>{`${user.fname} ${user.lname}`}</h1>
                 <h2>Homepage</h2>
